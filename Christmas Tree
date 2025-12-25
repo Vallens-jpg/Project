@@ -1,0 +1,36 @@
+import random
+
+tinggi_daun = 10
+tinggi_batang = 3
+
+#warna
+merah = "\033[91m"
+hijau = "\033[92m"
+kuning = "\033[93m"
+tutup_warna = "\033[0m"
+
+POLA_DAUN = ['^', '^', '^', 'o']
+
+for i in range(tinggi_daun):
+    spasi = ' ' * (tinggi_daun - i)
+
+    # upper star
+    if i == 0:
+        print(f"{spasi}{kuning}*{tutup_warna}")
+    # Leaf and acc
+    else:
+        daun = []
+        for k in range(2 * i + 1) :
+            pola_sekarang = random.choice(POLA_DAUN)
+
+            if pola_sekarang == 'o':
+                daun.append(str(merah) + "o" + str(tutup_warna))
+            else:
+                daun.append(str(hijau) + "^" + str(tutup_warna))
+        print(f"{spasi}{''.join(daun)}")
+
+    #Batang Pohon
+for j in range(tinggi_batang):
+    spasi = ' ' * (tinggi_daun - 1)
+    batang = "| " * 2
+    print(spasi + batang)
